@@ -32,6 +32,17 @@ class WeatherRecord:
             row.get("description", ""),
         )
 
+    def as_tuple(self):
+        return (
+            self.date.date(),
+            self.city,
+            round(self.t_min, 1),
+            round(self.t_max, 1),
+            round(self.t_avg, 1),
+            self.description,
+            round(self.swing, 1),
+        )
+
 
 if __name__ == "__main__":
     App().mainloop()
