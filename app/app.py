@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import filedialog, ttk
 
+import pandas as pd
+
 
 class App(tk.Tk):
     def __init__(self):
@@ -17,8 +19,16 @@ class App(tk.Tk):
             title="Выберите CSV или JSON",
             filetypes=[("CSV", "*.csv"), ("JSON", "*.json")],
         )
-        if path:
-            print("Файл выбран:", path)
+        if not path:
+            return
+        try:
+            if path.lower().endswith(".csv"):
+                self.data = pd.read_csv(path)
+            else:
+                self.data = pd.read_json(path)
+            print(self.data.head())
+        except Exception as e:
+            print("Ошибка:", e)
 
 
 if __name__ == "__main__":
