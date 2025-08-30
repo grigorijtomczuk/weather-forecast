@@ -19,6 +19,29 @@ class App(tk.Tk):
         self.canvas1 = FigureCanvasTkAgg(self.fig1, master=right)
         self.canvas1.get_tk_widget().pack(fill="both", expand=True)
 
+    def draw_plots(self):
+        if self.data.empty:
+            return
+
+        dates = self.data["date"]
+
+        self.ax1.clear()
+        self.ax1.plot(
+            dates, self.data["t_min"], marker="o", label="T min (°C)", color="blue"
+        )
+        self.ax1.plot(
+            dates, self.data["t_max"], marker="o", label="T max (°C)", color="red"
+        )
+        self.ax1.plot(dates, self.data["t_avg"], marker="o", label="T avg (°C)")
+
+        self.ax1.set_title("Температура по дням")
+        self.ax1.set_xlabel("Дата")
+        self.ax1.set_ylabel("Температура, °C")
+        self.ax1.legend()
+        self.ax1.grid(True, alpha=0.3)
+
+        self.canvas1.draw()
+
 
 if __name__ == "__main__":
     App().mainloop()
