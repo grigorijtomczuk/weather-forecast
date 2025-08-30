@@ -21,6 +21,17 @@ class WeatherRecord:
         self.description = description
         self.swing = self.t_max - self.t_min
 
+    @classmethod
+    def from_series(cls, row):
+        return cls(
+            row["date"],
+            row.get("city", ""),
+            row["t_min"],
+            row["t_max"],
+            row["t_avg"],
+            row.get("description", ""),
+        )
+
 
 if __name__ == "__main__":
     App().mainloop()
