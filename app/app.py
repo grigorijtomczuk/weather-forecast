@@ -5,11 +5,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
-import matplotlib.pyplot as plt
-from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-
-import pandas as pd
-
 
 class App(tk.Tk):
     """Класс приложения tkinter."""
@@ -160,6 +155,15 @@ class App(tk.Tk):
         self.ax2.legend()
         self.ax2.grid(True, alpha=0.3)
         self.canvas2.draw()
+
+        # Нахождение и отображение макс и мин перепадов температур
+        if self.records:
+            max_record = max(self.records, key=lambda r: r.swing)
+            min_record = min(self.records, key=lambda r: r.swing)
+            self.title(
+                f"Сильнейший перепад: {max_record.swing:.1f} °C ({max_record.date.date()}); "
+                f"Слабейший: {min_record.swing:.1f} °C ({min_record.date.date()})"
+            )
 
 
 class WeatherRecord:
