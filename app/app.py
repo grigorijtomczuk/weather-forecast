@@ -27,6 +27,42 @@ def moving_average_forecast(series, n=5, horizon=5):
         values.append(average)  # Добавляем прогноз в конец для следующего окна
     return np.array(forecast)
 
+
+class WeatherRecord:
+    """Класс для представления одной записи о погоде."""
+
+    def __init__(self, date, city, t_min, t_max, t_avg, description):
+        self.date = pd.to_datetime(date)
+        self.city = city
+        self.t_min = float(t_min)
+        self.t_max = float(t_max)
+        self.t_avg = float(t_avg)
+        self.description = description
+        self.swing = self.t_max - self.t_min
+
+    @classmethod
+    def from_series(cls, row):
+        return cls(
+            row["date"],
+            row.get("city", ""),
+            row["t_min"],
+            row["t_max"],
+            row["t_avg"],
+            row.get("description", ""),
+        )
+
+    def as_tuple(self):
+        return (
+            self.date.date(),
+            self.city,
+            round(self.t_min, 1),
+            round(self.t_max, 1),
+            round(self.t_avg, 1),
+            self.description,
+            round(self.swing, 1),
+        )
+
+
 class App(tk.Tk):
     """Класс приложения tkinter."""
 
@@ -140,18 +176,6 @@ class App(tk.Tk):
                 values=record.as_tuple(),
             )
 
-        # Правая панель для графиков
-        right = ttk.Frame(self)
-        right.pack(side="left", fill="both", expand=True, padx=10, pady=(0, 10))
-
-        self.fig1, self.ax1 = plt.subplots()
-        self.canvas1 = FigureCanvasTkAgg(self.fig1, master=right)
-        self.canvas1.get_tk_widget().pack(fill="both", expand=True)
-
-        self.fig2, self.ax2 = plt.subplots()
-        self.canvas2 = FigureCanvasTkAgg(self.fig2, master=right)
-        self.canvas2.get_tk_widget().pack(fill="both", expand=True, pady=(8, 0))
-
     def draw_plots(self):
         """Построение графиков."""
         if self.data.empty:
@@ -222,40 +246,6 @@ class App(tk.Tk):
             os.path.join(outdir, "Экстраполяция по скользящей средней.png"), dpi=150
         )
         messagebox.showinfo("Готово", "Графики сохранены")
-
-
-
-class WeatherRecord:
-    def __init__(self, date, city, t_min, t_max, t_avg, description):
-        self.date = pd.to_datetime(date)
-        self.city = city
-        self.t_min = float(t_min)
-        self.t_max = float(t_max)
-        self.t_avg = float(t_avg)
-        self.description = description
-        self.swing = self.t_max - self.t_min
-
-    @classmethod
-    def from_series(cls, row):
-        return cls(
-            row["date"],
-            row.get("city", ""),
-            row["t_min"],
-            row["t_max"],
-            row["t_avg"],
-            row.get("description", ""),
-        )
-
-    def as_tuple(self):
-        return (
-            self.date.date(),
-            self.city,
-            round(self.t_min, 1),
-            round(self.t_max, 1),
-            round(self.t_avg, 1),
-            self.description,
-            round(self.swing, 1),
-        )
 
 
 if __name__ == "__main__":
