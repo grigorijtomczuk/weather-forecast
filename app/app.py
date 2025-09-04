@@ -1,9 +1,31 @@
+import os
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+
+# Глобальные параметры графиков
+plt.rcParams["figure.figsize"] = (5, 2)
+plt.rcParams["font.size"] = 5
+plt.rcParams["lines.markersize"] = 1
+plt.rcParams["lines.linewidth"] = 1
+
+
+def moving_average_forecast(series, n=5, horizon=5):
+    """Функция для прогноза на основе скользящего среднего."""
+    values = list(series.astype(float))
+    forecast = []
+    for _ in range(horizon):
+        window = (
+            values[-n:] if len(values) >= n else values
+        )  # Берём последние n значений
+        average = float(np.mean(window))  # Считаем среднее по окну
+        forecast.append(average)
+        values.append(average)  # Добавляем прогноз в конец для следующего окна
+    return np.array(forecast)
 
 
 class App(tk.Tk):
@@ -28,8 +50,12 @@ class App(tk.Tk):
         ttk.Label(top, text="Прогноз, дней:").pack(side="left", padx=(10, 4))
         self.h_var = tk.IntVar(value=7)  # Кол-во дней для прогнозирования
         ttk.Entry(top, textvariable=self.h_var, width=5).pack(side="left")
-        ttk.Button(top, text="Построить графики").pack(side="left", padx=10)
-        ttk.Button(top, text="Сохранить графики").pack(side="left")
+        ttk.Button(top, text="Построить графики", command=self.draw_plots).pack(
+            side="left", padx=10
+        )
+        ttk.Button(top, text="Сохранить графики", command=self.save_plots).pack(
+            side="left"
+        )
 
         # Зона таблицы (отображение данных)
         self.tree = ttk.Treeview(
@@ -100,6 +126,7 @@ class App(tk.Tk):
                 WeatherRecord.from_series(row) for _, row in self.data.iterrows()
             ]
             self.refresh_table()
+            self.draw_plots()
         except Exception as e:
             messagebox.showerror("Ошибка", str(e))
 
@@ -127,38 +154,66 @@ class App(tk.Tk):
         self.canvas2.get_tk_widget().pack(fill="both", expand=True, pady=(8, 0))
 
     def draw_plots(self):
+        """Построение графиков."""
         if self.data.empty:
             return
+        n = max(1, int(self.n_var.get()))
+        h = max(1, int(self.h_var.get()))
 
         dates = self.data["date"]
-
         self.ax1.clear()
+        # График минимальной температуры
         self.ax1.plot(
             dates, self.data["t_min"], marker="o", label="T min (°C)", color="blue"
         )
+        # График максимальной температуры
         self.ax1.plot(
-            dates, self.data["t_max"], marker="o", label="T max (°C)", color="red"
+            dates,
+            self.data["t_max"],
+            marker="o",
+            label="T max (°C)",
+            color="red",
         )
+        # График средней температуры
         self.ax1.plot(dates, self.data["t_avg"], marker="o", label="T avg (°C)")
-
         self.ax1.set_title("Температура по дням")
         self.ax1.set_xlabel("Дата")
         self.ax1.set_ylabel("Температура, °C")
-        self.ax1.legend()
+        self.ax1.tick_params(axis="both")
         self.ax1.grid(True, alpha=0.3)
-
+        self.ax1.legend()
         self.canvas1.draw()
 
         self.ax2.clear()
-        n = 5
+        # Скользящее среднее по средней температуре
         moving_average = self.data["t_avg"].rolling(window=n, min_periods=1).mean()
+        # Прогноз на h дней вперёд
+        forecast = moving_average_forecast(self.data["t_avg"], n=n, horizon=h)
+        last_date = self.data["date"].iloc[-1]
+        future_dates = [last_date + pd.Timedelta(days=i) for i in range(1, h + 1)]
         self.ax2.plot(dates, self.data["t_avg"], marker="o", label="T avg (факт)")
         self.ax2.plot(dates, moving_average, label=f"Скользящая средняя (n={n})")
-
-        self.ax2.set_title("Скользящая средняя по T avg")
-        self.ax2.legend()
+        self.ax2.plot(future_dates, forecast, marker="o", label=f"Прогноз на {h} дн.")
+        self.ax2.set_title("Экстраполяция по скользящей средней")
+        self.ax2.set_xlabel("Дата")
+        self.ax2.set_ylabel("Температура, °C")
+        self.ax2.tick_params(axis="both")
         self.ax2.grid(True, alpha=0.3)
+        self.ax2.legend()
         self.canvas2.draw()
+
+    def save_plots(self):
+        """Сохранение графиков в выбранную папку."""
+        if self.data.empty:
+            return
+        outdir = filedialog.askdirectory(title="Папка для сохранения графиков")
+        if not outdir:
+            return
+        self.fig1.savefig(os.path.join(outdir, "Температура по дням.png"), dpi=150)
+        self.fig2.savefig(
+            os.path.join(outdir, "Экстраполяция по скользящей средней.png"), dpi=150
+        )
+        messagebox.showinfo("Готово", "Графики сохранены")
 
 
 class WeatherRecord:
