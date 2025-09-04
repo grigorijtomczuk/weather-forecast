@@ -36,7 +36,7 @@ class App(tk.Tk):
         self.title("Прогноз погоды")
         self.geometry("1600x1200")
         self.data = pd.DataFrame()
-        self.records = []  # Список записей
+        self.records = []  # Список объектов WeatherRecord
 
         # Зона настроек (верхняя панель)
         top = ttk.Frame(self)
@@ -121,6 +121,10 @@ class App(tk.Tk):
                 data["t_max"] - data["t_min"]
             )  # Вычисляем перепад температур
             self.data = data.sort_values("date").reset_index(drop=True)
+            # Создаём список WeatherRecord для дальнейшей работы
+            self.records = [
+                WeatherRecord.from_series(row) for _, row in self.data.iterrows()
+            ]
             self.refresh_table()
             self.draw_plots()
         except Exception as e:
