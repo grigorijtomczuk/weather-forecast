@@ -27,7 +27,6 @@ def moving_average_forecast(series, n=5, horizon=5):
         values.append(average)  # Добавляем прогноз в конец для следующего окна
     return np.array(forecast)
 
-
 class App(tk.Tk):
     """Класс приложения tkinter."""
 
@@ -202,6 +201,15 @@ class App(tk.Tk):
         self.ax2.legend()
         self.canvas2.draw()
 
+        # Нахождение и отображение макс и мин перепадов температур
+        if self.records:
+            max_record = max(self.records, key=lambda r: r.swing)
+            min_record = min(self.records, key=lambda r: r.swing)
+            self.title(
+                f"Сильнейший перепад: {max_record.swing:.1f} °C ({max_record.date.date()}); "
+                f"Слабейший: {min_record.swing:.1f} °C ({min_record.date.date()})"
+            )
+
     def save_plots(self):
         """Сохранение графиков в выбранную папку."""
         if self.data.empty:
@@ -214,6 +222,7 @@ class App(tk.Tk):
             os.path.join(outdir, "Экстраполяция по скользящей средней.png"), dpi=150
         )
         messagebox.showinfo("Готово", "Графики сохранены")
+
 
 
 class WeatherRecord:
