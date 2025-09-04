@@ -1,0 +1,242 @@
+[
+  {
+    "date":"2025-04-01",
+    "city":"Saint Petersburg",
+    "t_min":3.3,
+    "t_max":7.6,
+    "t_avg":5.4,
+    "description":"ясно"
+  },
+  {
+    "date":"2025-04-02",
+    "city":"Saint Petersburg",
+    "t_min":7.5,
+    "t_max":11.3,
+    "t_avg":9.4,
+    "description":"ясно"
+  },
+  {
+    "date":"2025-04-03",
+    "city":"Saint Petersburg",
+    "t_min":1.4,
+    "t_max":14.8,
+    "t_avg":8.1,
+    "description":"ветер"
+  },
+  {
+    "date":"2025-04-04",
+    "city":"Saint Petersburg",
+    "t_min":10.6,
+    "t_max":14.1,
+    "t_avg":12.4,
+    "description":"моросящий дождь"
+  },
+  {
+    "date":"2025-04-05",
+    "city":"Saint Petersburg",
+    "t_min":6.7,
+    "t_max":13.4,
+    "t_avg":10.0,
+    "description":"моросящий дождь"
+  },
+  {
+    "date":"2025-04-06",
+    "city":"Saint Petersburg",
+    "t_min":2.8,
+    "t_max":10.0,
+    "t_avg":6.4,
+    "description":"пасмурно"
+  },
+  {
+    "date":"2025-04-07",
+    "city":"Saint Petersburg",
+    "t_min":-2.7,
+    "t_max":-0.2,
+    "t_avg":-1.5,
+    "description":"переменная облачность"
+  },
+  {
+    "date":"2025-04-08",
+    "city":"Saint Petersburg",
+    "t_min":-7.4,
+    "t_max":-1.4,
+    "t_avg":-4.4,
+    "description":"ветер"
+  },
+  {
+    "date":"2025-04-09",
+    "city":"Saint Petersburg",
+    "t_min":-2.6,
+    "t_max":3.8,
+    "t_avg":0.6,
+    "description":"моросящий дождь"
+  },
+  {
+    "date":"2025-04-10",
+    "city":"Saint Petersburg",
+    "t_min":-2.7,
+    "t_max":2.4,
+    "t_avg":-0.2,
+    "description":"ясно"
+  },
+  {
+    "date":"2025-04-11",
+    "city":"Saint Petersburg",
+    "t_min":1.4,
+    "t_max":7.5,
+    "t_avg":4.4,
+    "description":"пасмурно"
+  },
+  {
+    "date":"2025-04-12",
+    "city":"Saint Petersburg",
+    "t_min":4.3,
+    "t_max":11.7,
+    "t_avg":8.0,
+    "description":"ветер"
+  },
+  {
+    "date":"2025-04-13",
+    "city":"Saint Petersburg",
+    "t_min":-0.4,
+    "t_max":8.1,
+    "t_avg":3.8,
+    "description":"переменная облачность"
+  },
+  {
+    "date":"2025-04-14",
+    "city":"Saint Petersburg",
+    "t_min":2.5,
+    "t_max":13.0,
+    "t_avg":7.8,
+    "description":"моросящий дождь"
+  },
+  {
+    "date":"2025-04-15",
+    "city":"Saint Petersburg",
+    "t_min":5.5,
+    "t_max":10.9,
+    "t_avg":8.2,
+    "description":"ясно"
+  },
+  {
+    "date":"2025-04-16",
+    "city":"Saint Petersburg",
+    "t_min":3.0,
+    "t_max":11.2,
+    "t_avg":7.1,
+    "description":"ясно"
+  },
+  {
+    "date":"2025-04-17",
+    "city":"Saint Petersburg",
+    "t_min":-1.6,
+    "t_max":7.6,
+    "t_avg":3.0,
+    "description":"ясно"
+  },
+  {
+    "date":"2025-04-18",
+    "city":"Saint Petersburg",
+    "t_min":-4.7,
+    "t_max":0.8,
+    "t_avg":-1.9,
+    "description":"моросящий дождь"
+  },
+  {
+    "date":"2025-04-19",
+    "city":"Saint Petersburg",
+    "t_min":2.3,
+    "t_max":6.0,
+    "t_avg":4.1,
+    "description":"переменная облачность"
+  },
+  {
+    "date":"2025-04-20",
+    "city":"Saint Petersburg",
+    "t_min":-2.6,
+    "t_max":4.0,
+    "t_avg":0.7,
+    "description":"пасмурно"
+  },
+  {
+    "date":"2025-04-21",
+    "city":"Saint Petersburg",
+    "t_min":0.4,
+    "t_max":4.3,
+    "t_avg":2.3,
+    "description":"ясно"
+  },
+  {
+    "date":"2025-04-22",
+    "city":"Saint Petersburg",
+    "t_min":7.6,
+    "t_max":14.2,
+    "t_avg":10.9,
+    "description":"моросящий дождь"
+  },
+  {
+    "date":"2025-04-23",
+    "city":"Saint Petersburg",
+    "t_min":4.7,
+    "t_max":11.8,
+    "t_avg":8.2,
+    "description":"ветер"
+  },
+  {
+    "date":"2025-04-24",
+    "city":"Saint Petersburg",
+    "t_min":4.3,
+    "t_max":12.0,
+    "t_avg":8.1,
+    "description":"ветер"
+  },
+  {
+    "date":"2025-04-25",
+    "city":"Saint Petersburg",
+    "t_min":7.3,
+    "t_max":11.9,
+    "t_avg":9.6,
+    "description":"дождь"
+  },
+  {
+    "date":"2025-04-26",
+    "city":"Saint Petersburg",
+    "t_min":0.0,
+    "t_max":4.5,
+    "t_avg":2.2,
+    "description":"ясно"
+  },
+  {
+    "date":"2025-04-27",
+    "city":"Saint Petersburg",
+    "t_min":-2.1,
+    "t_max":3.9,
+    "t_avg":0.9,
+    "description":"переменная облачность"
+  },
+  {
+    "date":"2025-04-28",
+    "city":"Saint Petersburg",
+    "t_min":4.5,
+    "t_max":8.8,
+    "t_avg":6.6,
+    "description":"моросящий дождь"
+  },
+  {
+    "date":"2025-04-29",
+    "city":"Saint Petersburg",
+    "t_min":-1.4,
+    "t_max":7.3,
+    "t_avg":2.9,
+    "description":"переменная облачность"
+  },
+  {
+    "date":"2025-04-30",
+    "city":"Saint Petersburg",
+    "t_min":-6.1,
+    "t_max":2.9,
+    "t_avg":-1.6,
+    "description":"ясно"
+  }
+]
