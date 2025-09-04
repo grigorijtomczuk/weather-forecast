@@ -1,0 +1,31 @@
+date,city,t_min,t_max,t_avg,description
+2025-04-01,Saint Petersburg,3.3,7.6,5.4,ясно
+2025-04-02,Saint Petersburg,7.5,11.3,9.4,ясно
+2025-04-03,Saint Petersburg,1.4,14.8,8.1,ветер
+2025-04-04,Saint Petersburg,10.6,14.1,12.4,моросящий дождь
+2025-04-05,Saint Petersburg,6.7,13.4,10.0,моросящий дождь
+2025-04-06,Saint Petersburg,2.8,10.0,6.4,пасмурно
+2025-04-07,Saint Petersburg,-2.7,-0.2,-1.5,переменная облачность
+2025-04-08,Saint Petersburg,-7.4,-1.4,-4.4,ветер
+2025-04-09,Saint Petersburg,-2.6,3.8,0.6,моросящий дождь
+2025-04-10,Saint Petersburg,-2.7,2.4,-0.2,ясно
+2025-04-11,Saint Petersburg,1.4,7.5,4.4,пасмурно
+2025-04-12,Saint Petersburg,4.3,11.7,8.0,ветер
+2025-04-13,Saint Petersburg,-0.4,8.1,3.8,переменная облачность
+2025-04-14,Saint Petersburg,2.5,13.0,7.8,моросящий дождь
+2025-04-15,Saint Petersburg,5.5,10.9,8.2,ясно
+2025-04-16,Saint Petersburg,3.0,11.2,7.1,ясно
+2025-04-17,Saint Petersburg,-1.6,7.6,3.0,ясно
+2025-04-18,Saint Petersburg,-4.7,0.8,-1.9,моросящий дождь
+2025-04-19,Saint Petersburg,2.3,6.0,4.1,переменная облачность
+2025-04-20,Saint Petersburg,-2.6,4.0,0.7,пасмурно
+2025-04-21,Saint Petersburg,0.4,4.3,2.3,ясно
+2025-04-22,Saint Petersburg,7.6,14.2,10.9,моросящий дождь
+2025-04-23,Saint Petersburg,4.7,11.8,8.2,ветер
+2025-04-24,Saint Petersburg,4.3,12.0,8.1,ветер
+2025-04-25,Saint Petersburg,7.3,11.9,9.6,дождь
+2025-04-26,Saint Petersburg,-0.0,4.5,2.2,ясно
+2025-04-27,Saint Petersburg,-2.1,3.9,0.9,переменная облачность
+2025-04-28,Saint Petersburg,4.5,8.8,6.6,моросящий дождь
+2025-04-29,Saint Petersburg,-1.4,7.3,2.9,переменная облачность
+2025-04-30,Saint Petersburg,-6.1,2.9,-1.6,ясно
